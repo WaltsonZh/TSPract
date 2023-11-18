@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import '../assets/Navbar.css'
 
 export default function Navbar() {
   return (
@@ -7,13 +8,13 @@ export default function Navbar() {
         <i className='bx bxl-typescript'></i>
       </div>
       <div className='Navbar-list'>
-        <NavLink to='/' className={({ isActive }) => (isActive ? 'current' : '')}>
+        <NavLink to='/' className={({ isActive }) => (isActive ? 'Navbar-current' : '')}>
           Todo
         </NavLink>
-        <NavLink to='/done' className={({ isActive }) => (isActive ? 'current' : '')}>
+        <NavLink to='/done' className={({ isActive }) => (isActive ? 'Navbar-current' : '')}>
           Done
         </NavLink>
-        <NavLink to='/add' className={({ isActive }) => (isActive ? 'current' : '')}>
+        <NavLink to='/add' className={({ isActive }) => (isActive ? 'Navbar-current' : '')}>
           Add
         </NavLink>
       </div>

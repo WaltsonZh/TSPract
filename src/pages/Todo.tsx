@@ -1,3 +1,4 @@
+import '../assets/Todo.css'
 import { useEffect } from 'react'
 import { useAppDispatch, useAppSelector } from '../redux/hooks.ts'
 import { selectTasks, setTaskId } from '../redux/tasksSlice.ts'
@@ -20,6 +21,7 @@ export default function Todo() {
 
   return (
     <div className='page Todo'>
+      <h1>Todos</h1>
       {tasksElements}
     </div>
   )

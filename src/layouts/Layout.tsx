@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar.tsx'
 import { Outlet } from 'react-router-dom'
 import { DocumentData, DocumentSnapshot, onSnapshot, orderBy, query } from 'firebase/firestore'
 import { taskCollection } from '../firebase/firestore.ts'
-import { setTasks } from '../redux/tasksSlice.ts'
+import { setDocIds, setTasks } from '../redux/tasksSlice.ts'
 import { useAppDispatch } from '../redux/hooks.ts'
 import { Task } from '../types.ts'
 
@@ -13,14 +13,19 @@ export default function Layout() {
   useEffect(() => {
     const q = query(taskCollection, orderBy('pin', 'desc'))
     const unsubscribe = onSnapshot(q, (snapshot) => {
-      dispatch(setTasks(snapshot.docs.map((doc: DocumentSnapshot<DocumentData>) => {
-        const task = doc.data()
-        const timestamp = task!.createAt.toDate()
-        return {
-          ...task,
-          createAt: timestamp,
-        } as Task
-      })))
+      dispatch(
+        setTasks(
+          snapshot.docs.map((doc: DocumentSnapshot<DocumentData>) => {
+            const task = doc.data()
+            const timestamp = task!.createAt.toDate()
+            return {
+              ...task,
+              createAt: timestamp,
+            } as Task
+          })
+        )
+      )
+      dispatch(setDocIds(snapshot.docs.map((doc: DocumentSnapshot<DocumentData>) => doc.id)))
     })
 
     return unsubscribe

@@ -30,7 +30,7 @@ export const addTask = createAsyncThunk('tasks/add', async (newTask: Task) => {
 })
 
 export const toggleDone = createAsyncThunk('tasks/toggle', async () => {
-  
+
 })
 
 const tasksSlice = createSlice({
@@ -43,6 +43,9 @@ const tasksSlice = createSlice({
     setTaskId: (state, action: PayloadAction<number>) => {
       state.taskId = action.payload
     },
+    setDocIds: (state, action: PayloadAction<string[]>) => {
+      state.docIds = action.payload
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(addTask.fulfilled, (state, action: PayloadAction<string | null>) => {
@@ -53,8 +56,9 @@ const tasksSlice = createSlice({
   },
 })
 
-export const { setTasks, setTaskId } = tasksSlice.actions
+export const { setTasks, setTaskId, setDocIds } = tasksSlice.actions
 export const selectTasks = (state: RootState) => state.tasks.tasks
 export const selectTaskId = (state: RootState) => state.tasks.taskId
+export const selectDocIds = (state: RootState) => state.tasks.docIds
 
 export default tasksSlice.reducer

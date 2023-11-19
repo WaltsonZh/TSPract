@@ -1,0 +1,59 @@
+.TaskBox {
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: 1fr auto;
+  padding: 1em;
+  background-color: var(--primary-light);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.TaskBox:hover {
+  transform: scale(1.08);
+}
+
+.TaskBox > h2,
+.TaskBox > p {
+  overflow: hidden;
+  grid-column: 1;
+  user-select: none;
+}
+
+.TaskBox > h2 {
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+}
+
+.TaskBox > p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.TaskBox-done {
+  place-self: center;
+  grid-row: 1 / -1;
+  grid-column: 2;
+}
+
+.TaskBox-done > .bx {
+  font-size: 2em;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  margin: 0 0 0 24px;
+  border-radius: 50%;
+  transition: all 0.15s ease-in-out;
+}
+
+.TaskBox-done > .bx:hover {
+  background-color: var(--primary-dark);
+}
+
+.TaskBox-done > .bx:active {
+  background-color: var(--dark-active);
+}

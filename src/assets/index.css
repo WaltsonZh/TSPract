@@ -8,12 +8,12 @@
 }
 
 body {
-  /* https://coolors.co/202132-28293e-383a57-585c89-6a6fa0-cdcfdf */
+  /* https://coolors.co/202132-30314b-383a57-585c89-6a6fa0-cdcfdf */
   --text-content: #cdcfdf;
   --primary-light: #6a6fa0;
   --light-active: #585c89;
   --background: #383a57;
-  --dark-active: #28293e;
+  --dark-active: #30314b;
   --primary-dark: #202132;
 
   background-color: var(--background);

@@ -1,3 +1,4 @@
+import '../assets/TaskBox.css'
 import { Task } from '../types.ts'
 
 interface TaskBoxProp {
@@ -9,7 +10,11 @@ export default function TaskBox(prop: TaskBoxProp) {
 
   return (
     <div className='TaskBox'>
-      {JSON.stringify(task)}
+      <h2>{task.title}</h2>
+      <p>{task.desc}</p>
+      <div className='TaskBox-done'>
+        <i className='bx bx-check'></i>
+      </div>
     </div>
   )
 }

@@ -1,0 +1,143 @@
+.Add {
+  display: grid;
+  gap: 2em;
+}
+
+.Add-title,
+.Add-desc {
+  position: relative;
+}
+
+.Add-title > input,
+.Add-desc > textarea {
+  width: 100%;
+  height: 2em;
+  border-radius: 10px;
+  font-size: 1.6em;
+  text-indent: 16px;
+  background-color: transparent;
+  outline: none;
+  border: 2px solid var(--primary-light);
+  color: var(--text-content);
+  transition: all 0.2s ease-in-out;
+}
+
+.Add-desc > textarea {
+  resize: none;
+  height: 100px;
+  text-indent: 0;
+  padding: 8px 16px;
+}
+
+.Add-title > span,
+.Add-desc > span {
+  position: absolute;
+  font-size: 1.6em;
+  user-select: none;
+  color: var(--primary-light);
+  top: 10px;
+  left: 18px;
+  transition: all 0.2s ease-in-out;
+}
+
+.Add-title > input:is(:valid, :focus),
+.Add-desc > textarea:is(:valid, :focus) {
+  border: 2px solid var(--text-content);
+}
+
+.Add-title > input:is(:valid, :focus) + span,
+.Add-desc > textarea:is(:valid, :focus) + span {
+  top: -8px;
+  left: 12px;
+  font-size: 1em;
+  background-color: var(--background);
+  color: var(--text-content);
+  padding: 0 4px;
+}
+
+.Add-pin {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  font-size: 1.6em;
+}
+
+.Add-pin > label {
+  user-select: none;
+}
+
+.Add-pin > input {
+  background-color: var(--primary-light);
+  height: 32px;
+  width: 64px;
+  border-radius: 16px;
+  box-shadow: inset 1px 1px 2px 2px rgba(0, 0, 0, 0.25);
+  position: relative;
+  cursor: pointer;
+  appearance: none;
+}
+
+.Add-pin > input::before {
+  content: '';
+  width: 32px;
+  height: 100%;
+  border-radius: 16px;
+  background-color: var(--text-content);
+  box-shadow: inset 1px 1px 2px 2px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+}
+
+.Add-pin > input:checked::before {
+  width: 100%;
+}
+
+.Add-pin > input::after {
+  content: '';
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.25);
+  background-color: var(--primary-dark);
+  left: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.Add-pin > input:checked::after {
+  left: 32px;
+}
+
+.Add-submit {
+  font-size: 1.6em;
+  height: 2em;
+  width: 200px;
+  place-self: center;
+  color: var(--text-content);
+  background-color: var(--primary-dark);
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.Add-submit::after {
+  content: '';
+  position: absolute;
+  height: 100%;
+  top: 0;
+  z-index: -1;
+  background-color: var(--primary-light);
+  border-radius: 10px;
+  width: 0;
+  right: 0;
+  transition: all 0.2s ease-in-out;
+}
+
+.Add-submit:hover::after {
+  right: unset;
+  left: 0;
+  width: 100%;
+}

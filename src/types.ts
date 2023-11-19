@@ -1,6 +1,7 @@
-export type Task = {
+export interface Task {
   title: string
   desc: string
-  pin: boolean
+  pin?: string
+  done: boolean
   createAt: Date
 }

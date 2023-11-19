@@ -13,7 +13,14 @@ export default function Layout() {
   useEffect(() => {
     const q = query(taskCollection, orderBy('pin', 'desc'))
     const unsubscribe = onSnapshot(q, (snapshot) => {
-      dispatch(setTasks(snapshot.docs.map((doc: DocumentSnapshot<DocumentData>) => doc.data() as Task)))
+      dispatch(setTasks(snapshot.docs.map((doc: DocumentSnapshot<DocumentData>) => {
+        const task = doc.data()
+        const timestamp = task!.createAt.toDate()
+        return {
+          ...task,
+          createAt: timestamp,
+        } as Task
+      })))
     })
 
     return unsubscribe

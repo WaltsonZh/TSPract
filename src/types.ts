@@ -1,7 +1,7 @@
 export interface Task {
   title: string
   desc: string
-  pin?: string
+  pin: boolean
   done: boolean
-  createAt: Date
+  createAt: Date,
 }

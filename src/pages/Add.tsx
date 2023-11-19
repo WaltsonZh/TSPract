@@ -1,8 +1,8 @@
 import { Form, ActionFunctionArgs, useActionData, useNavigate } from 'react-router-dom'
 import '../assets/Add.css'
 import { Task } from '../types.ts'
-import { useAppDispatch, useAppSelector } from '../redux/hooks.ts'
-import { selectTaskId, addTask } from '../redux/tasksSlice.ts'
+import { useAppDispatch } from '../redux/hooks.ts'
+import { addTask } from '../redux/tasksSlice.ts'
 import { useEffect } from 'react'
 
 interface Form {
@@ -32,13 +32,12 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 }
 
 export default function Add() {
-  const taskId = useAppSelector<number>(selectTaskId)
   const dispatch = useAppDispatch()
-  const actionData = useActionData()
+  const actionData = useActionData() as Form
   const navigate = useNavigate()
 
   const asyncAddTask = async (newTask: Task) => {
-    await dispatch(addTask([newTask, taskId]))
+    await dispatch(addTask(newTask)).unwrap()
   }
 
   useEffect(() => {
@@ -46,10 +45,11 @@ export default function Add() {
       const newTask = {
         ...actionData,
         done: false,
+        pin: actionData?.pin ? true : false,
         createAt: new Date(),
       } as Task
       asyncAddTask(newTask)
-      
+
       navigate('/')
     }
   }, [actionData])

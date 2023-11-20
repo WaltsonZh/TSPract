@@ -62,13 +62,14 @@
     height: 100%;
     font-size: 2em;
     z-index: 3;
+    cursor: pointer;
   }
 
   .Navbar-list {
     display: none;
   }
 
-  .Navbar-list {
+  #Navbar-toggle:checked ~ .Navbar-list {
     position: absolute;
     right: 0;
     top: 3em;
@@ -80,9 +81,11 @@
   .Navbar-list > a {
     font-size: 1.2em;
     border-top: 1px solid var(--light-active);
+    width: 150px;
+    text-align: center;
   }
 
-  .Navbar-overlay {
+  #Navbar-toggle:checked ~ .Navbar-overlay {
     position: absolute;
     display: block;
     top: 0;

@@ -22,3 +22,14 @@
   text-decoration: none;
   color: var(--text-content);
 }
+
+@media (width < 700px) {
+  .Footer > p {
+    font-size: 1em;
+  }
+
+  .Footer-links {
+    width: 100px;
+    font-size: 1.2em;
+  }
+}

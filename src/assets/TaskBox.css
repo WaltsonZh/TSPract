@@ -96,11 +96,8 @@
     color: var(--background);
   }
 
+  .TaskBox-done > .bx,
   .TaskBox-done > .bx:hover {
-    background-color: transparent;
-  }
-
-  .TaskBox-done > .bx:active {
     background-color: var(--dark-active);
   }
 }

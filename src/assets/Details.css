@@ -31,14 +31,12 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .Details-content > .bx:hover {
   background-color: var(--primary-dark);
-}
-
-.Details-content > .bx:active {
-  background-color: var(--dark-active);
 }
 
 .Details-content > p {
@@ -102,6 +100,28 @@
 }
 
 @media (width < 700px) {
+  .Details-content > .bx:hover {
+    background-color: transparent;
+  }
+
+  .Details-content > .bx:active {
+    background-color: var(--dark-active);
+  }
+
+  .Details-editing > .Details-actions {
+    align-self: center;
+  }
+
+  .Details-editing > .Details-actions > button {
+    width: auto;
+    padding: 0 1em;
+    transition: all 0.1s ease-in-out;
+  }
+
+  .Details-toggle {
+    transition: all 0.1s ease-in-out;
+  }
+
   .Details-toggle > p {
     display: none;
   }

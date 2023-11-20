@@ -14,7 +14,15 @@ export default function Navbar() {
       <div className='Navbar-logo'>
         <i className='bx bxl-typescript'></i>
       </div>
-      <input type='checkbox' id='Navbar-toggle' style={{ display: 'none' }} checked={checked} />
+      <input
+        type='checkbox'
+        id='Navbar-toggle'
+        style={{ display: 'none' }}
+        checked={checked}
+        onChange={(e) => {
+          setChecked(e.target.checked)
+        }}
+      />
       <i className='bx bx-menu' onClick={toggleChecked}></i>
       <div className='Navbar-overlay' onClick={toggleChecked}></div>
       <div className='Navbar-list' onClick={toggleChecked}>

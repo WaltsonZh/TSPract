@@ -39,3 +39,20 @@
 .show .Model-delete::after {
   background-color: red;
 }
+
+@media (width < 700px) {
+  .show .Model-content {
+    max-width: 100%;
+    margin: 1em;
+  }
+
+  .show .Model-content > h1 {
+    font-size: 1.6em;
+  }
+
+  .show .Model-content > button {
+    width: auto;
+    padding: 0 1em;
+    transition: all 0.1s ease-in-out;
+  }
+}

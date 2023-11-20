@@ -148,6 +148,10 @@
     justify-content: center;
   }
 
+  .Add-submit {
+    transition: all 0.1s ease-in-out;
+  }
+
   .Add-submit::after {
     height: 0;
   }

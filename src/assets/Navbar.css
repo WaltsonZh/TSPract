@@ -3,6 +3,10 @@
   display: grid;
   grid-template-columns: 1fr auto;
   width: 100%;
+  position: sticky;
+  top: 0;
+  border-bottom: 1em solid var(--background);
+  z-index: 1;
 }
 
 .Navbar-logo {

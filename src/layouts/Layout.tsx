@@ -7,6 +7,7 @@ import { setDocIds, setTasks } from '../redux/tasksSlice.ts'
 import { useAppDispatch } from '../redux/hooks.ts'
 import { Task } from '../types.ts'
 import Model from '../components/Model.tsx'
+import Footer from '../components/Footer.tsx'
 
 export default function Layout() {
   const dispatch = useAppDispatch()
@@ -36,6 +37,7 @@ export default function Layout() {
     <>
       <Navbar />
       <Outlet />
+      <Footer />
       <Model />
     </>
   )

@@ -1,0 +1,24 @@
+.Footer {
+  display: flex;
+  background-color: var(--primary-light);
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  height: 4em;
+}
+
+.Footer > p {
+  font-size: 1.6em;
+}
+
+.Footer-links {
+  width: 300px;
+  display: flex;
+  justify-content: space-around;
+  font-size: 2em;
+}
+
+.Footer-links > a {
+  text-decoration: none;
+  color: var(--text-content);
+}

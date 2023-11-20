@@ -57,6 +57,7 @@ export default function Details() {
               <button
                 className='Add-submit'
                 onClick={() => {
+                  setTitle(task.title)
                   setEditTitle(false)
                 }}
               >
@@ -104,9 +105,12 @@ export default function Details() {
               <p>{task.done ? 'Restart' : 'Finish'}</p>
               <i className={`bx bx-${task.done ? 'undo' : 'check'}`}></i>
             </div>
-            <div className='Details-toggle Details-delete' onClick={() => {
-              dispatch(toggleModel())
-            }}>
+            <div
+              className='Details-toggle Details-delete'
+              onClick={() => {
+                dispatch(toggleModel())
+              }}
+            >
               <p>Delete</p>
               <i className='bx bx-trash'></i>
             </div>
@@ -126,6 +130,7 @@ export default function Details() {
               <button
                 className='Add-submit'
                 onClick={() => {
+                  setDesc(task.desc)
                   setEditDesc(false)
                 }}
               >

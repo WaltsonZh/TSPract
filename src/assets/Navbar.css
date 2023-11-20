@@ -74,6 +74,7 @@
     right: 0;
     top: 3em;
     background-color: var(--primary-light);
+    box-shadow: -2px 2px 4px 1px rgba(0, 0, 0, 0.25);
     display: grid;
     z-index: 3;
   }

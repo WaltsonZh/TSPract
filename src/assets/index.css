@@ -30,6 +30,15 @@ body {
 
 .page {
   width: 45%;
+  min-width: 500px;
   padding: 1em;
   margin-bottom: auto;
+}
+
+@media (width < 700px) {
+  .page {
+    width: 500px;
+    min-width: unset;
+    max-width: 100%;
+  }
 }

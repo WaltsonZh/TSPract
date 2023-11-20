@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import { Task } from '../types.ts'
 import { RootState } from './store.ts'
-import { addDoc } from 'firebase/firestore'
+import { addDoc, doc, updateDoc } from 'firebase/firestore'
 import { taskCollection } from '../firebase/firestore.ts'
 
 interface tasksState {
@@ -29,8 +29,30 @@ export const addTask = createAsyncThunk('tasks/add', async (newTask: Task) => {
   return null
 })
 
-export const toggleDone = createAsyncThunk('tasks/toggle', async () => {
+export const toggleDone = createAsyncThunk('tasks/toggleDone', async (togglePayload: { docId: string, prevDone: boolean}) => {
+  const { docId, prevDone } = togglePayload
+  try {
+    await updateDoc(doc(taskCollection, docId), {
+      done: !prevDone,
+    })
+  } catch (err) {
+    if (err instanceof Error) {
+      console.log(err.message)
+    }
+  }
+})
 
+export const togglePin = createAsyncThunk('tasks/togglePin', async (togglePayload: { docId: string; prevPin: boolean }) => {
+  const { docId, prevPin } = togglePayload
+  try {
+    await updateDoc(doc(taskCollection, docId), {
+      pin: !prevPin,
+    })
+  } catch (err) {
+    if (err instanceof Error) {
+      console.log(err.message)
+    }
+  }
 })
 
 const tasksSlice = createSlice({
@@ -45,7 +67,7 @@ const tasksSlice = createSlice({
     },
     setDocIds: (state, action: PayloadAction<string[]>) => {
       state.docIds = action.payload
-    }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(addTask.fulfilled, (state, action: PayloadAction<string | null>) => {

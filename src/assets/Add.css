@@ -120,7 +120,7 @@
   border: none;
   border-radius: 10px;
   position: relative;
-  z-index: 1;
+  z-index: 0;
   cursor: pointer;
 }
 

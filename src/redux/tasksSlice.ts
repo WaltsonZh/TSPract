@@ -6,13 +6,11 @@ import { taskCollection } from '../firebase/firestore.ts'
 
 interface tasksState {
   tasks: Task[]
-  taskId: number
   docIds: string[]
 }
 
 const initialState: tasksState = {
   tasks: [],
-  taskId: 0,
   docIds: [],
 }
 
@@ -62,9 +60,6 @@ const tasksSlice = createSlice({
     setTasks: (state, action: PayloadAction<Task[]>) => {
       state.tasks = action.payload
     },
-    setTaskId: (state, action: PayloadAction<number>) => {
-      state.taskId = action.payload
-    },
     setDocIds: (state, action: PayloadAction<string[]>) => {
       state.docIds = action.payload
     },
@@ -78,9 +73,8 @@ const tasksSlice = createSlice({
   },
 })
 
-export const { setTasks, setTaskId, setDocIds } = tasksSlice.actions
+export const { setTasks, setDocIds } = tasksSlice.actions
 export const selectTasks = (state: RootState) => state.tasks.tasks
-export const selectTaskId = (state: RootState) => state.tasks.taskId
 export const selectDocIds = (state: RootState) => state.tasks.docIds
 
 export default tasksSlice.reducer

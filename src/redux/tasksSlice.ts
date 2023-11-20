@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import { Task } from '../types.ts'
 import { RootState } from './store.ts'
-import { addDoc, doc, setDoc } from 'firebase/firestore'
+import { addDoc, deleteDoc, doc, setDoc } from 'firebase/firestore'
 import { taskCollection } from '../firebase/firestore.ts'
 
 interface tasksState {
@@ -31,6 +31,16 @@ export const setTask = createAsyncThunk('tasks/setTask', async (setTaskPayload: 
   const { newTask, docId } = setTaskPayload
   try {
     await setDoc(doc(taskCollection, docId), newTask)
+  } catch (err) {
+    if (err instanceof Error) {
+      console.log(err.message)
+    }
+  }
+})
+
+export const deleteTask = createAsyncThunk('tasks/deleteTask', async (docId: string) => {
+  try {
+    await deleteDoc(doc(taskCollection, docId))
   } catch (err) {
     if (err instanceof Error) {
       console.log(err.message)

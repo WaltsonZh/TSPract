@@ -7,7 +7,7 @@ import { selectTaskByDocId, setTask } from '../redux/tasksSlice.ts'
 import { useEffect, useState } from 'react'
 import { toggleModel } from '../redux/modelSlice.ts'
 
-type DetailsParams = {
+export type DetailsParams = {
   id: string
 }
 

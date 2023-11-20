@@ -101,3 +101,20 @@
   background-color: red;
 }
 
+@media (width < 700px) {
+  .Details-toggle > p {
+    display: none;
+  }
+
+  .Details-toggle::after {
+    height: 0;
+  }
+
+  .Details-toggle:active {
+    background-color: var(--light-active);
+  }
+
+  .Details-delete:active {
+    background-color: red;
+  }
+}

@@ -45,7 +45,7 @@ export default function Details() {
           <div className={editTitle ? 'Details-editing' : 'Details-content'}>
             <h1>{task.title}</h1>
             <div className='Add-title'>
-              <input type='text' value={title} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)} />
+              <input type='text' value={title} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTitle(e.target.value)} required />
             </div>
             <i
               className='bx bx-edit'
@@ -118,7 +118,7 @@ export default function Details() {
           <div className={editDesc ? 'Details-editing' : 'Details-content'}>
             <p>{task.desc}</p>
             <div className='Add-desc'>
-              <textarea value={desc} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setDesc(e.target.value)} />
+              <textarea value={desc} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setDesc(e.target.value)} required />
             </div>
             <i
               className='bx bx-edit'

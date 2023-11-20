@@ -142,3 +142,17 @@
   left: 0;
   width: 100%;
 }
+
+@media (width < 700px) {
+  .Add-pin {
+    justify-content: center;
+  }
+
+  .Add-submit::after {
+    height: 0;
+  }
+
+  .Add-submit:active {
+    background-color: var(--dark-active);
+  }
+}

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import '../assets/TaskBox.css'
 import { Task } from '../types.ts'
 import { useAppDispatch } from '../redux/hooks.ts'
-import { toggleDone, togglePin } from '../redux/tasksSlice.ts'
+import { setTask } from '../redux/tasksSlice.ts'
 
 interface TaskBoxProp {
   task: Task
@@ -24,7 +24,11 @@ export default function TaskBox(prop: TaskBoxProp) {
         className={'bx ' + (task.pin ? 'bxs-pin' : 'bx-pin')}
         onClick={(e) => {
           e.stopPropagation()
-          dispatch(togglePin({ docId, prevPin: task.pin }))
+          const newTask = {
+            ...task,
+            pin: !task.pin,
+          } as Task
+          dispatch(setTask({ newTask, docId }))
         }}
       ></i>
 
@@ -35,7 +39,11 @@ export default function TaskBox(prop: TaskBoxProp) {
           className={'bx bx-' + (task.done ? 'undo' : 'check')}
           onClick={(e) => {
             e.stopPropagation()
-            dispatch(toggleDone({ docId, prevDone: task.done }))
+            const newTask = {
+              ...task,
+              done: !task.done,
+            } as Task
+            dispatch(setTask({ newTask, docId }))
           }}
         ></i>
       </div>

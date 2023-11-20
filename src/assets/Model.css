@@ -1,0 +1,41 @@
+.show {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.show .Model-overlay {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+}
+
+.Model-content {
+  display: none;
+}
+
+.show .Model-content {
+  width: 500px;
+  height: 150px;
+  background-color: var(--light-active);
+  z-index: 101;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 10px;
+}
+
+.show .Model-content > h1 {
+  grid-column: -1 / 1;
+  place-self: center;
+}
+
+.show .Model-delete::after {
+  background-color: red;
+}

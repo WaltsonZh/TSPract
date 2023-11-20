@@ -4,6 +4,57 @@
   gap: 1em;
 }
 
+.Details-content,
+.Details-editing {
+  display: flex;
+  flex-direction: column;
+}
+
+.Details-content > .Add-title,
+.Details-content > .Add-desc,
+.Details-content > .Details-actions {
+  display: none;
+}
+
+.Details-editing > h1,
+.Details-editing > p,
+.Details-editing > .bx {
+  display: none;
+}
+
+.Details-content > .bx {
+  align-self: end;
+  font-size: 1.2em;
+  width: 2.4em;
+  height: 2.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.Details-content > .bx:hover {
+  background-color: var(--primary-dark);
+}
+
+.Details-content > .bx:active {
+  background-color: var(--dark-active);
+}
+
+.Details-content > p {
+  line-height: 1.6;
+}
+
+.Details-editing {
+  gap: 1em;
+}
+
+.Details-editing > .Details-actions {
+  align-self: end;
+  display: flex;
+  gap: 1em;
+}
+
 .Details-panel {
   display: flex;
   gap: 1em;
@@ -50,6 +101,3 @@
   background-color: red;
 }
 
-.Details > p {
-  line-height: 1.6;
-}

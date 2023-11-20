@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit'
 import { Task } from '../types.ts'
 import { RootState } from './store.ts'
-import { addDoc, doc, updateDoc } from 'firebase/firestore'
+import { addDoc, doc, setDoc } from 'firebase/firestore'
 import { taskCollection } from '../firebase/firestore.ts'
 
 interface tasksState {
@@ -27,25 +27,10 @@ export const addTask = createAsyncThunk('tasks/addTask', async (newTask: Task) =
   return null
 })
 
-export const toggleDone = createAsyncThunk('tasks/toggleDone', async (togglePayload: { docId: string; prevDone: boolean }) => {
-  const { docId, prevDone } = togglePayload
+export const setTask = createAsyncThunk('tasks/setTask', async (setTaskPayload: {newTask: Task, docId: string}) => {
+  const { newTask, docId } = setTaskPayload
   try {
-    await updateDoc(doc(taskCollection, docId), {
-      done: !prevDone,
-    })
-  } catch (err) {
-    if (err instanceof Error) {
-      console.log(err.message)
-    }
-  }
-})
-
-export const togglePin = createAsyncThunk('tasks/togglePin', async (togglePayload: { docId: string; prevPin: boolean }) => {
-  const { docId, prevPin } = togglePayload
-  try {
-    await updateDoc(doc(taskCollection, docId), {
-      pin: !prevPin,
-    })
+    await setDoc(doc(taskCollection, docId), newTask)
   } catch (err) {
     if (err instanceof Error) {
       console.log(err.message)

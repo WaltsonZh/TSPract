@@ -6,6 +6,7 @@ import { taskCollection } from '../firebase/firestore.ts'
 import { setDocIds, setTasks } from '../redux/tasksSlice.ts'
 import { useAppDispatch } from '../redux/hooks.ts'
 import { Task } from '../types.ts'
+import Model from '../components/Model.tsx'
 
 export default function Layout() {
   const dispatch = useAppDispatch()
@@ -35,6 +36,7 @@ export default function Layout() {
     <>
       <Navbar />
       <Outlet />
+      <Model />
     </>
   )
 }

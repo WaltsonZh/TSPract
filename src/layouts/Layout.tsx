@@ -11,7 +11,7 @@ export default function Layout() {
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    const q = query(taskCollection, orderBy('pin', 'desc'))
+    const q = query(taskCollection, orderBy('pin', 'desc'), orderBy('createAt', 'desc'))
     const unsubscribe = onSnapshot(q, (snapshot) => {
       dispatch(
         setTasks(

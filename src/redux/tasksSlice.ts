@@ -14,7 +14,7 @@ const initialState: tasksState = {
   docIds: [],
 }
 
-export const addTask = createAsyncThunk('tasks/add', async (newTask: Task) => {
+export const addTask = createAsyncThunk('tasks/addTask', async (newTask: Task) => {
   try {
     const { id } = await addDoc(taskCollection, newTask)
     return id
@@ -27,7 +27,7 @@ export const addTask = createAsyncThunk('tasks/add', async (newTask: Task) => {
   return null
 })
 
-export const toggleDone = createAsyncThunk('tasks/toggleDone', async (togglePayload: { docId: string, prevDone: boolean}) => {
+export const toggleDone = createAsyncThunk('tasks/toggleDone', async (togglePayload: { docId: string; prevDone: boolean }) => {
   const { docId, prevDone } = togglePayload
   try {
     await updateDoc(doc(taskCollection, docId), {
@@ -76,5 +76,9 @@ const tasksSlice = createSlice({
 export const { setTasks, setDocIds } = tasksSlice.actions
 export const selectTasks = (state: RootState) => state.tasks.tasks
 export const selectDocIds = (state: RootState) => state.tasks.docIds
+export const selectTaskByDocId = (state: RootState, docId: string) => {
+  const index = state.tasks.docIds.indexOf(docId)
+  return state.tasks.tasks[index]
+}
 
 export default tasksSlice.reducer

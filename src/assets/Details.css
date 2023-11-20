@@ -1,0 +1,55 @@
+.Details {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.Details-panel {
+  display: flex;
+  gap: 1em;
+}
+
+.Details-toggle {
+  display: flex;
+  font-size: 1.2em;
+  gap: 1em;
+  align-items: center;
+  padding: 0.8em 1em;
+  border-radius: 10px;
+  background-color: var(--primary-light);
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.Details-toggle > * {
+  pointer-events: none;
+  user-select: none;
+}
+
+.Details-toggle::after {
+  content: '';
+  position: absolute;
+  background-color: var(--light-active);
+  border-radius: 10px;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  transition: all 0.2s ease-in-out;
+  z-index: -1;
+}
+
+.Details-toggle:hover::after {
+  right: unset;
+  left: 0;
+  width: 100%;
+}
+
+.Details-delete::after {
+  background-color: red;
+}
+
+.Details > p {
+  line-height: 1.6;
+}
